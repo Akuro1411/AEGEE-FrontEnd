@@ -1,6 +1,6 @@
 // src/pages/Project/sections/ProjectHero/ProjectHero.jsx
 import React from "react";
-import "./ProjectHero.scss";
+import "./projectHero.scss";
 
 const ProjectHero = ({ headline, backgroundImage }) => {
   return (
