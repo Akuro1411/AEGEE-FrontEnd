@@ -75,7 +75,7 @@
     height: 416px;
     border-radius: 16px;
     overflow: hidden;
-    cursor: pointer;
+    cursor: default; // no "clickable" cursor by default on small screens
     transition: all 0.5s ease-in-out;
     min-width: 120px;
     max-width: 100%;
@@ -83,19 +83,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    &:hover {
-      flex: 3 1 65%;
-
-      .about-card-content {
-        .hover-content {
-          opacity: 1;
-        }
-      }
-    }
-
-    &:hover ~ .expandable-card {
-      flex: 1 1 120px;
-    }
+    // 🔹 REMOVE the global &:hover rules from here
 
     .card-image {
       width: 100%;
@@ -112,21 +100,21 @@
       justify-content: space-between;
       padding: 1.75rem;
       color: #fff;
-      z-index: 1; // create stacking context above background
+      z-index: 1;
 
       .overlay {
         position: absolute;
         inset: 0;
         border-radius: 16px;
-        background: rgba(20, 104, 197, 0.45); // 🔹 stronger tint
-        z-index: 1; // under text, above background
+        background: rgba(20, 104, 197, 0.45);
+        z-index: 1;
         pointer-events: none;
       }
 
       .content-left,
       .hover-content {
         position: relative;
-        z-index: 2; // text & icons above overlay
+        z-index: 2;
       }
 
       .content-left {
@@ -172,6 +160,7 @@
       }
     }
 
+    // 🔹 Tablet & below: no hover effect, description always visible (as you had)
     @media (max-width: 1024px) {
       height: 320px;
 
@@ -185,7 +174,7 @@
         }
 
         .hover-content {
-          opacity: 1;
+          opacity: 1; // always visible
         }
       }
     }
@@ -193,9 +182,30 @@
     @media (max-width: 768px) {
       flex: 1 1 350px;
 
+      // explicitly kill flex-grow on hover for mobile
       &:hover {
-        flex: 1 1 100%;
+        flex: 1 1 350px;
+      }
+    }
+
+    // 🔹 Desktop only: enable hover expand effect
+    @media (min-width: 1025px) {
+      cursor: pointer;
+
+      &:hover {
+        flex: 3 1 65%;
+
+        .about-card-content {
+          .hover-content {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:hover ~ .expandable-card {
+        flex: 1 1 120px;
       }
     }
   }
+
 }

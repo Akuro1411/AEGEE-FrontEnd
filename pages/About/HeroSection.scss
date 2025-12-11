@@ -112,6 +112,15 @@
     @media screen and (max-width: 768px) {
       order: -1; // move map above text
       margin-bottom: 1rem;
+
+
     }
   }
 }
+@media screen and (max-width: 768px) {
+      .info-section .map-container img{
+        height: 85%;
+      }
+
+
+    }

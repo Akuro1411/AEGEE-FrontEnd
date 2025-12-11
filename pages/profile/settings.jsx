@@ -158,12 +158,12 @@ const handlePwd = async (e) => {
 
         {showAlert && (
           <div className="about__alert">
-            <img
+            {/* <img
               className="about__alert-stripe"
               src="../../files/vertical-line-f.svg"
               alt=""
               aria-hidden="true"
-            />
+            /> */}
             <div className="about__alert-content">
               <div className="about__alert-head">
                 <span className="about__alert-title">Complete your profile</span>
