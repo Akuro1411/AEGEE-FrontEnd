@@ -61,7 +61,7 @@ const Footer = () => {
       </div>
 
       <div className="footer__copyright container">
-        <p>COPYRIGHT XXXX - 2025 AEGEE BAKI | ALL RIGHTS RESERVED</p>
+        <p>COPYRIGHT 2025 AEGEE BAKI | ALL RIGHTS RESERVED</p>
         <div className="footer__social">
           <a href="#" className="instagram">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
