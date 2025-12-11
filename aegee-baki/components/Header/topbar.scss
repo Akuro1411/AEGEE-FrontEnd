@@ -1,0 +1,22 @@
+@use '../../styles/variables';
+
+.top-bar {
+  background-color: variables.$blue;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+  }
+
+  &__social a img {
+    width: 18px;
+    margin-left: 12px;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

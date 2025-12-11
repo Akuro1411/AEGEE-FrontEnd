@@ -1,0 +1,63 @@
+@use '../../styles/variables';
+@use '../../styles/layout';
+
+.events-page-wrapper {
+  background: #fff;
+}
+
+
+.events-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.type-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.type-chip {
+  padding: 14px 11px;
+  background: variables.$background;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.05s ease, background 0.2s ease;
+
+  font-family: variables.$font-heading;
+  font-size: 22px;
+  color: variables.$grey-dark;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &.active {
+    background: variables.$yellow;
+  }
+}
+
+.no-events {
+  width: 100%;
+  padding: 24px;
+  background: #fff;
+  border-radius: 20px;
+  color: variables.$grey-dark;
+  font-family: variables.$font-primary;
+  font-size: 16px;
+}
+
+.events-wrapper-plain {
+  background: #fff;
+}
+
+.past-events-wrapper-plain {
+  background: #fff;
+}

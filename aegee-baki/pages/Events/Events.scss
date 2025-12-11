@@ -1,0 +1,14 @@
+@use '../../styles/layout';
+
+.events-page {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding-bottom: 70px;
+    @media screen and (max-width:1000px) {
+        gap:80px
+    }
+    @media screen and (max-width:700px) {
+        gap:50px
+    }
+}

@@ -1,0 +1,244 @@
+@use "../../styles/variables";
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.card-title {
+  font-family: variables.$font-heading;
+  color: variables.$grey-dark;
+  font-size: 24px;
+}
+
+/* ---------- ABOUT CARD ---------- */
+.about {
+  display: grid;
+  gap: 16px;
+
+  /* alert container */
+  &__alert {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: stretch;
+    background: variables.$background;
+    border-radius: 0 20px 20px 0;
+    overflow: hidden;
+  }
+
+  &__alert-stripe {
+    height: 100px;
+    width: auto;
+    display: block;
+  }
+
+  &__alert-content {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__alert-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__alert-title {
+    font-family: variables.$font-heading;
+    color: variables.$grey-dark;
+    font-size: 22px;
+  }
+
+  &__alert-close {
+    background: transparent;
+    border: 0;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  &__alert-text {
+    margin: 8px 0 0;
+    font-family: variables.$font-primary;
+    font-size: 16px;
+    color: variables.$grey-dark;
+  }
+}
+
+/* ---------- FORMS ---------- */
+.form {
+  display: grid;
+  gap: 16px;
+
+  .form-grid {
+    display: grid;                 
+    grid-template-columns: 1fr 1fr; 
+    gap: 14px 16px;
+
+    &.form-grid--2 {
+      grid-template-columns: 1fr;   
+    }
+
+    .field--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .field {
+    display: grid;
+    gap: 6px;
+
+    label {
+      font-family: variables.$font-primary;
+      font-size: 14px;
+      color: variables.$grey-dark;
+
+      .req {
+        color: variables.$red-light;
+        font-size: 16px;
+        margin-left: 2px;
+      }
+    }
+
+    input,
+    select,
+    textarea {
+      border: 1px solid transparent;
+      background: variables.$background;
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-family: variables.$font-primary;
+      font-size: 16px;
+      color: variables.$grey-dark;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: variables.$grey-light; 
+    }
+
+    .hint {
+      font-size: 12px;
+      font-family: variables.$font-primary;
+      color: variables.$grey;
+    }
+
+    &.is-empty .hint {
+      color: variables.$grey;
+    }
+  }
+
+  .form__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .btn-primary {
+    background: variables.$blue;
+    color: variables.$white;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-family: variables.$font-primary;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.form__status {
+  font-family: variables.$font-primary;
+  font-size: 14px;
+  color: variables.$grey-dark;
+
+  &.is-error { color: variables.$red-light; }
+  &.is-success { color: variables.$green; }
+}
+
+@media (max-width: 960px) {
+  .form .form-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- ACCOUNT CARD ---------- */
+.account {
+  display: grid;
+  gap: 16px;
+
+  .account__section {
+    padding: 4px 0;
+
+    &--divider {
+      padding-bottom: 28px;
+      // border-bottom: 1px solid variables.$grey-light;
+    }
+  }
+
+  .section-title {
+    font-family: variables.$font-heading;
+    color: variables.$grey-dark;
+    font-size: 22px;
+    margin: 0 0 10px;
+  }
+
+  .newsletter__option {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 9999px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+
+    &:hover .checkbox-box {
+      background: rgba(20, 104, 197, 0.2); 
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .checkbox-box {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid variables.$blue;
+      flex: 0 0 18px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    input:checked + .checkbox-box {
+      background: variables.$blue;
+      border-color: variables.$blue;
+    }
+
+    input:checked + .checkbox-box::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 6px;
+      height: 10px;
+      border: solid variables.$white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .newsletter__label {
+      font-family: variables.$font-primary;
+      color: variables.$grey-dark;
+      font-size: 16px;
+    }
+  }
+}

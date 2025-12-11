@@ -1,0 +1,128 @@
+@use '../../styles/variables';
+@use 'sass:color';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.member_cta_section {
+  background-image: url(../../files/Dynamic\ Squares\ Blue.png);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+   padding-bottom: 120px;
+   padding-top: 90px;
+  .members_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 80px;
+    .membersText {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
+      gap: 20px;
+      width: 100%;
+      
+      img {
+        width: 128px;
+        height: auto;
+      }
+      .textWrapper {
+        display: flex;
+        flex-direction: column;
+        h2 {
+          color: variables.$blue;
+          margin-bottom: 10px;
+        }
+    
+        p {
+          font-family: variables.$font-primary;
+          color: variables.$grey-dark;
+          max-width: 90%;
+        }
+      }
+       @media screen and (max-width: 1024px) {
+      flex-direction: column; // tablet and smaller
+      align-items: start;
+
+        p {
+          max-width: 100%;
+        }
+         img {
+      transform: rotate(180deg);
+      width: 120px;
+    }
+      }
+    }
+
+    .poloroid_cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      @media screen and (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .poloroid {
+      background-color: white;
+      width: 400px;
+      height: 450px;
+      border-radius: 0.25rem;
+      padding: 1.275rem;
+      box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2);
+      transform-origin: center center;
+      transition: transform 0.3s ease;
+
+       @media screen and (max-width: 1024px) {
+    height: 350px; // tablet and smaller
+  }
+  
+      img {
+        width: 100%;
+        height: 75%;
+        object-fit: cover;
+        border-radius: 0.25rem;
+
+        @media screen and (max-width: 640px) {
+          height: auto;
+          aspect-ratio: 4 / 3;
+        }
+      }
+
+      p {
+        font-family: variables.$font-primary;
+        font-size: 1.25rem;
+        font-style: italic;
+        text-align: center;
+        margin-top: 0.75rem;
+      }
+
+      &:nth-child(odd) {
+        transform: rotate(-15deg);
+        margin-right: -90px;
+      }
+
+      &:nth-child(even) {
+        transform: rotate(15deg);
+      }
+    }
+
+    
+  }
+}
+

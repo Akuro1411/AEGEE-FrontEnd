@@ -1,0 +1,240 @@
+@use '../../styles/variables';
+@use '../../styles/typography';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.board-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1rem;
+
+  img {
+    width: 100px;
+    height: auto;
+  }
+
+  p {
+    font-family: variables.$font-primary;
+    color: variables.$grey-dark;
+    font-size: 1rem;
+  }
+}
+
+.section-title {
+  color: variables.$blue;
+  font-family: variables.$font-heading;
+}
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.flip-box {
+  width: 100%;
+  position: relative;
+  margin-bottom: 4%;
+}
+
+.flip-box-inner {
+  width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.blue-strip {
+  width: 100%;
+  height: 28px;
+  background-color: variables.$blue-dark;
+  background-image: url('../../files/bottom blue line.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+
+  &.top {
+    border-radius: 1.25rem 1.25rem 0 0;
+  }
+
+  &.bottom {
+    border-radius: 0 0 1.25rem 1.25rem;
+  }
+}
+
+.card-content {
+  background-color: #fff;
+  background-image: url('../../files/Dynamic Squares Blue.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+}
+
+.front-inner {
+  display: flex;
+  width: 100%;
+  // height: 100%;
+
+  .inner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    gap: 1.4rem;
+    padding: 1.5rem;
+
+    .mobile-holder {
+      display: flex;
+      flex-direction: row;
+      gap: 1.75rem;
+      height: 100%;
+    }
+
+    .member-img {
+      width: 50%;
+      height:  24rem;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 1.25rem;
+    }
+
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .logo-placeholder {
+        width: 130px;
+        height: 80px;
+        align-self: flex-end;
+      }
+
+      .content-info {
+        .member-name {
+          color: variables.$blue;
+          font-size: 1.5rem;
+          margin-bottom: 0.25rem;
+          font-family: variables.$font-heading;
+        }
+
+        .member-role {
+          color: variables.$yellow;
+          font-size: 0.85rem;
+          font-weight: 600;
+          font-family: variables.$font-primary;
+        }
+
+        .member-word--inline {
+          margin-top: 0.5rem;
+        }
+      }
+
+      .socials {
+        display: flex;
+        gap: 8px;
+        margin-top: 15px;
+
+        .social-icon {
+          width: 32px;
+          height: 32px;
+          background-color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+          }
+
+          svg {
+            width: 17px;
+            height: 17px;
+            fill: variables.$blue-dark;
+          }
+        }
+      }
+    }
+
+    .member-word {
+      font-family: variables.$font-primary;
+      line-height: 1.6;
+      color: variables.$grey-dark;
+      font-size: 1rem;
+    }
+
+    .member-word--inline {
+      display: block;
+    }
+
+    .member-word--bottom {
+      display: none;
+      margin-top: 1rem;
+    }
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 860px) {
+  .board-section {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .member-img {
+    width: 50%;
+  }
+
+  .content {
+    flex: 1 1 100%;
+    max-width: 100%;
+    align-items: flex-start;
+
+    .socials {
+      justify-content: flex-start;
+    }
+  }
+
+  .flip-box-inner .logo-placeholder {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .front-inner .inner-content .member-word--inline {
+    display: none;
+  }
+
+  .front-inner .inner-content .member-word--bottom {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .front-inner .inner-content .content .logo-placeholder {
+    width: 60px;
+    height: 50px;
+  }
+
+  .front-inner .inner-content .member-img {
+    height: 100%;
+  }
+}

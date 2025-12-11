@@ -1,0 +1,201 @@
+@use '../../styles/variables';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.about-wrapper {
+  padding-top: 43px;
+  padding-bottom: 4.75rem;
+
+  .texts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h2 {
+      border-right: 1px solid variables.$blue;
+      margin-bottom: 0;
+      color: variables.$blue;
+      font-size: 4rem;
+      padding-right: 10px;
+      width: 40%;
+      font-family: variables.$font-heading;
+    }
+
+    p {
+      padding-left: 88px;
+      width: 70%;
+      font-family: variables.$font-primary;
+      font-size: 1rem;
+      color: variables.$grey-dark;
+    }
+
+    @media screen and (max-width: 900px) {
+      p {
+        padding-left: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: start;
+
+      h2 {
+        border-right: none;
+        border-bottom: 1px solid variables.$blue;
+        padding-bottom: 1rem;
+        width: 100%;
+      }
+
+      p {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 1rem;
+      }
+    }
+  }
+
+  .cards {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .expandable-card {
+    position: relative;
+    flex: 1 1 120px;
+    height: 416px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    min-width: 120px;
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      flex: 3 1 65%;
+
+      .about-card-content {
+        .hover-content {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:hover ~ .expandable-card {
+      flex: 1 1 120px;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .about-card-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1.75rem;
+      color: #fff;
+      z-index: 1; // create stacking context above background
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        background: rgba(20, 104, 197, 0.45); // 🔹 stronger tint
+        z-index: 1; // under text, above background
+        pointer-events: none;
+      }
+
+      .content-left,
+      .hover-content {
+        position: relative;
+        z-index: 2; // text & icons above overlay
+      }
+
+      .content-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-icon {
+        width: 32px;
+        height: 32px;
+        background: white;
+        padding: 8px;
+        border-radius: 8px;
+      }
+
+      .hover-content {
+        opacity: 0;
+        font-family: variables.$font-primary;
+        font-size: 1rem;
+        transition: opacity 0.5s ease;
+      }
+
+      .card-description {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .member-info {
+        .count {
+          font-family: variables.$font-heading;
+          font-size: 64px;
+          font-weight: bold;
+          line-height: 1;
+        }
+
+        .label {
+          font-family: variables.$font-primary;
+          font-size: 20px;
+          font-weight: 600;
+          color: variables.$yellow;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      height: 320px;
+
+      .about-card-content {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+
+        .content-left {
+          flex-direction: row-reverse;
+        }
+
+        .hover-content {
+          opacity: 1;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex: 1 1 300px;
+
+      &:hover {
+        flex: 1 1 100%;
+      }
+    }
+  }
+}

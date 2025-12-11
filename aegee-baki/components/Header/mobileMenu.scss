@@ -1,0 +1,125 @@
+@use '../../styles/typography';
+@use '../../styles/variables';
+
+.mobile-menu {
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 16px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  &__line {
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    a {
+      font-family: variables.$font-heading;
+      font-size: 18px;
+      color: #000;
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e5e5;
+
+      &:hover {
+        color: variables.$blue;
+      }
+
+      &.active {
+        color: variables.$blue;
+        border-bottom-color: variables.$blue;
+      }
+    }
+  }
+
+  /* 🔹 Auth buttons container (Sign up / Log in / Logout) */
+  &__auth {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* 🔹 Mobile buttons – same look as desktop .navbar-buttons .btn */
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: variables.$white;
+    font-family: variables.$font-primary;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;          // full-width on mobile
+    box-sizing: border-box;
+  }
+
+  .yellow {
+    background-color: variables.$yellow;
+    margin-right: 0;      // no right margin on stacked buttons
+
+    &:hover {
+      background-color: variables.$yellow-light;
+    }
+  }
+
+  .blue {
+    background-color: variables.$blue;
+
+    &:hover {
+      background-color: variables.$blue-dark;
+    }
+  }
+
+  /* 🔹 Logout button styling */
+  &__logout {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #000;
+    font-family: variables.$font-primary;
+    font-weight: 500;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  /* Optional: profile link with icon in the nav */
+  &__profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .profile-icon {
+      display: inline-flex;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width: 860px) {
+  .mobile-menu {
+    display: none;
+  }
+}

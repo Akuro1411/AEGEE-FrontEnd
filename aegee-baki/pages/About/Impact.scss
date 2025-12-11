@@ -1,0 +1,194 @@
+@use '../../styles/variables';
+
+.impact-wrapper{
+    padding-top: 70px;
+}
+   .impact-wrapper h2 {
+        color: variables.$blue;
+    }
+.card-wrapper {
+   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: stretch;
+    
+}
+
+.impact-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   
+  justify-content: end;
+  text-align: right;      
+  gap: 1rem;
+
+  img {
+    width: 100px;
+    height: auto;
+    transform: rotate(270deg);
+  }
+
+  p {
+    font-family: variables.$font-primary;
+    color: variables.$grey;
+    font-size: 16px;
+  }
+
+}
+.impact-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 280px;
+
+  .card-base,
+  .card-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+  }
+
+  .card-base {
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      .impact-icon {
+        width: 150px;
+        height: auto;
+        display: block;
+      }
+
+      h3 {
+        color: white;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .card-hover {
+    color: white;
+    z-index: 2;
+    transform: translateY(100%); // hidden by default on desktop
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+
+    .hover-content {
+      display: flex;
+      flex-direction: column;
+
+      .impact-icon--small {
+        width: 80px;
+        height: auto;
+        align-self: flex-end;
+        display: block;
+      }
+
+      h3 {
+        margin-top: 10px;
+      }
+
+      p {
+        font-family: variables.$font-primary;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &:hover {
+    .card-hover {
+      transform: translateY(0); // slide up on hover (desktop)
+    }
+  }
+}
+
+.purple {
+  .overlay {
+    background-color: rgba(variables.$purple, 0.4);
+  }
+  .card-hover {
+    background-color: variables.$purple;
+  }
+}
+.yellow {
+  .overlay {
+    background-color: rgba(variables.$yellow, 0.4);
+  }
+  .card-hover {
+    background-color: variables.$yellow;
+  }
+}
+.green {
+  .overlay {
+    background-color: rgba(variables.$green, 0.4);
+  }
+  .card-hover {
+    background-color: variables.$green;
+  }
+}
+.red {
+  .overlay {
+    background-color: rgba(variables.$red, 0.4);
+  }
+  .card-hover {
+    background-color: variables.$red;
+  }
+}
+.blue {
+  .overlay {
+    background-color: rgba(variables.$blue, 0.4);
+  }
+  .card-hover {
+    background-color: variables.$blue;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .card-wrapper {
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* 🔻 NEW: tablet & smaller – always show hover content, hide base */
+@media screen and (max-width: 1024px) {
+  .impact-card {
+   cursor: default;              
+    aspect-ratio: auto;          
+    min-height: 340px;
+    .card-base {
+      display: none; // hide base state
+    }
+
+    .card-hover {
+      transform: translateY(0); // hover content always visible
+    }
+  }
+}

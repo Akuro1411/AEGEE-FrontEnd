@@ -1,0 +1,301 @@
+@use '../../styles/variables';
+@use '../../styles/layout';
+
+.upcoming {
+  --card-w: 320px;
+  --card-h: 420px;
+
+  display: grid;
+  gap: 24px;
+  padding-top: 180px;
+
+  .upcoming__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__title {
+    color: variables.$blue;
+    font-family: variables.$font-heading;
+    font-size: clamp(28px, 4vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  &__description {
+    font-size: 16px;
+    color: variables.$grey-dark;
+    font-family: variables.$font-primary;
+    max-width: 920px;
+    margin: 0 0 16px;
+  }
+
+  &__filters {
+    margin-bottom: 8px;
+  }
+
+  &__filterList {
+    display: flex;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  &__filter {
+    background: variables.$background;
+    border-radius: 20px;
+    padding: 11px 24px;
+    color: variables.$grey-dark;
+    font-family: variables.$font-heading;
+    font-size: 22px;
+    line-height: 1;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 10px;
+    transition: box-shadow 160ms ease, background-color 160ms ease, transform 160ms ease;
+
+    &:hover {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.10);
+      transform: translateY(-1px);
+    }
+
+    &.is-active {
+      background: variables.$yellow;
+    }
+  }
+
+  &__filterIcon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+  }
+
+   &__empty {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+
+  &__scroller {
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--card-w);
+    gap: 18px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    padding: 8px 4px 0;
+    cursor: grab;
+
+    &.is-grabbing { cursor: grabbing; }
+
+    /* Hide scrollbar everywhere */
+    scrollbar-width: none;         /* Firefox */
+    -ms-overflow-style: none;      /* IE/Edge */
+    &::-webkit-scrollbar { display: none; } /* WebKit */
+  }
+
+  /* Dots */
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 0 8px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: variables.$grey-light;
+    border: none;
+    cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease;
+
+    &.is-active {
+      background: variables.$blue;
+      transform: scale(1.1);
+    }
+  }
+  .ann-empty {
+  color: variables.$blue;
+  font-family: variables.$font-heading;
+  background-color: variables.$blue-bg;
+  border-left: 3px solid variables.$blue;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+  &::before {
+    content: "i";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid variables.$blue;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .upcoming__empty {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .ann-empty {
+    font-size: 0.9rem;
+    padding: 12px 14px;
+  }
+}
+}
+
+/* Event card */
+.eventCard {
+  --ov: 0.6; /* default overlay strength (60%) */
+
+  position: relative;
+  width: var(--card-w);
+  height: var(--card-h);
+  border-radius: 20px;
+  overflow: hidden;
+  user-select: none;
+  isolation: isolate;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  transition: transform 220ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    --ov: 1; /* overlay goes to 100% on hover */
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transition: transform 300ms ease;
+  }
+
+  /* zoom image a bit on hover */
+  &:hover .eventCard__bg {
+    transform: scale(1.05);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to top,
+      rgba(20, 104, 197, var(--ov)) 0%,
+      rgba(20, 104, 197, calc(var(--ov) * 0.75)) 30%,
+      rgba(20, 104, 197, calc(var(--ov) * 0.0)) 70%
+    );
+    transition: opacity 220ms ease, filter 220ms ease, background 220ms ease;
+  }
+
+  &:hover .eventCard__overlay {
+    opacity: 1;
+    filter: saturate(1.05) brightness(0.95);
+  }
+
+  &__content {
+    position: absolute;
+    inset: auto 16px 16px 16px;
+    z-index: 2;
+    display: grid;
+    gap: 10px;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.15;
+    margin: 0;
+    font-family: variables.$font-heading;
+  }
+
+  &__date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    font-family: variables.$font-primary;
+  }
+
+  &__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+  }
+
+  &__locationText {
+    font-size: 12px;
+    font-family: variables.$font-primary;
+    color: #fff;
+  }
+
+  &__pin {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__cta {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    background: variables.$yellow;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 180ms ease, transform 180ms ease;
+    font-family:  variables.$font-primary;
+    &:hover { background: variables.$yellow-light; }
+    &:hover .eventCard__arrow { transform: rotate(-45deg); }
+  }
+
+  &__arrow {
+    display: inline-flex;
+    transition: transform 220ms ease;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .upcoming { --card-w: 300px; --card-h: 480px; }
+}
+@media (max-width: 900px) {
+  .upcoming {
+    --card-w: 280px; --card-h: 440px;
+    &__title { text-align: center; }
+    &__description { text-align: center; margin-inline: auto; padding-inline: 16px; }
+    &__filterList { justify-content: center; }
+  }
+}
+@media (max-width: 600px) {
+  .upcoming { --card-w: 240px; --card-h: 400px; }
+}

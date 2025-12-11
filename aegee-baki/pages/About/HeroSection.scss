@@ -1,0 +1,117 @@
+// src/components/InfoSection/InfoSection.scss
+@use '../../styles/variables';
+@use '../../styles/typography';
+
+.info-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center; 
+  gap: 2rem;
+  padding: 120px 0px 60px;
+  margin-top: -88px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    padding-left: 120px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+    h1 {
+      color: variables.$blue;
+    }
+
+    .text-base {
+      color: variables.$grey-dark;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: variables.$yellow;
+      font-family: variables.$font-primary;
+      font-weight: 600;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+
+      svg {
+        margin-left: 8px;
+      }
+
+      &:hover {
+        background-color: variables.$yellow-light;
+      }
+    }
+
+    @media (max-width: 1100px) {
+    padding-left: 60px;
+  }
+
+  @media (max-width: 640px) {
+    padding-left: 20px;
+  }
+  }
+
+  .map-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin-left: -90px;
+    img {
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+
+    .card {
+      position: absolute;
+      width: 147px;
+    //   height:0px;
+      border-radius: 20px 20px 0 20px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      .icon-wrapper {
+        background-color: variables.$blue-bg;
+        padding: 8px;
+        border-radius: 8px;
+
+        svg {
+          fill: variables.$blue;
+        }
+      }
+
+      .info {
+        margin-left: 8px;
+
+        .number {
+            font-family: variables.$font-heading;
+          display: block;
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: variables.$yellow;
+        }
+
+        .label {
+          display: block;
+          color: variables.$grey-dark;
+        }
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      order: -1; // move map above text
+      margin-bottom: 1rem;
+    }
+  }
+}

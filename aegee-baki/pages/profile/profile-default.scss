@@ -1,0 +1,66 @@
+@use "../../styles/variables";
+@use "../../styles/layout";
+
+/* shared card style matching spec */
+.card {
+  background: variables.$white;
+  border: 1px solid variables.$background;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1); 
+}
+
+/* ---------- layout ---------- */
+.profile {
+  max-width: 1200px;
+  margin-top: 180px;
+  margin-bottom: 100px;
+
+  &__main {
+    margin-top: 16px;
+  }
+}
+
+/* ---------- member header ---------- */
+.member {
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__name {
+    font-family: variables.$font-heading;
+    color: variables.$grey-dark;
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  &__tag {
+    font-family: variables.$font-primary;
+    font-weight: 600; 
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 8px;
+    padding: 4px 8px;
+
+    &.is-member {
+      background: variables.$blue;
+      color: variables.$white;
+    }
+
+    &.is-nonmember {
+      background: variables.$grey-light;
+      color: variables.$grey-dark;
+    }
+  }
+
+  &__handle {
+    margin-top: 6px;
+    font-family: variables.$font-primary;
+    font-size: 20px;
+    color: variables.$grey;
+  }
+}

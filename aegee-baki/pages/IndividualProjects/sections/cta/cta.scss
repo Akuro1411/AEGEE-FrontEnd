@@ -1,0 +1,117 @@
+@use "../../../../styles/variables";
+
+.project-cta {
+  position: relative;
+  width: 100%;
+  height: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 80px;
+
+  // default background (can be overridden via inline style)
+  background-image: url("../../../../files/eventCta.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 104, 197, 0.5);
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__tag {
+    margin: 0;
+    color: variables.$yellow;
+    font-family: variables.$font-heading;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0;
+    color: variables.$white;
+    font-family: variables.$font-heading;
+    font-size: 96px;
+    line-height: 1.02;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: variables.$yellow;
+    color: variables.$white;
+    font-family: variables.$font-heading;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background 160ms ease;
+
+    &:hover,
+    &:focus-visible {
+      background: variables.$yellow-light;
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    height: 340px;
+
+    &__title {
+      font-size: 72px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    height: 300px;
+
+    &__title {
+      font-size: 56px;
+    }
+
+    &__tag {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 260px;
+
+    &__title {
+      font-size: 44px;
+    }
+
+    &__tag {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 230px;
+
+    &__title {
+      font-size: 36px;
+    }
+  }
+}

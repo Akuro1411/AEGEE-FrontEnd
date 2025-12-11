@@ -1,0 +1,82 @@
+@use '../../styles/variables';
+
+body {
+  overflow-x: hidden;
+}
+.contributors-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background-color: white;
+  padding: 30px 0;
+  position: relative;
+}
+
+.contributors-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-seamless 20s linear infinite;
+
+  img {
+    height: 60px;
+    margin-right: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      height: 45px;
+      margin-right: 40px;
+    }
+
+    @media (max-width: 480px) {
+      height: 35px;
+      margin-right: 30px;
+    }
+  }
+}
+
+@keyframes scroll-seamless {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.colored_circles {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-bottom: -60px; 
+  position: relative;
+  z-index: 2; 
+}
+.colored_circles_opp {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-top: -60px; 
+  position: absolute;
+  right: 0;
+  z-index: 2; 
+}
+
+// home.scss (or similar)
+.events-wrapper-home {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  background-image:
+    url('../files/bottom blue line.svg'),
+    linear-gradient(to bottom, #163E7A 0%, #2872E0 50%, #FFFFFF 100%);
+  background-size: cover, auto;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .colorfulCircle {
+    width: 100px;
+    height: auto;
+    margin-top: -50%;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,75 @@
+@use "../../styles/variables" ;
+.not-found {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+padding: 200px 0px 130px;
+  &__inner {
+    max-width: 720px;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__image {
+    max-width: min(100%, 440px);
+    height: auto;
+    inline-size: auto;
+    block-size: auto;
+  }
+
+  &__title {
+    font-size: 48px; /* exact per spec */
+    line-height: 1.1;
+    margin: 0;
+    color: variables.$blue; /* h1 color */
+  }
+
+  &__desc {
+    font-family: variables.$font-primary;
+    font-size: 16px; /* exact per spec */
+    line-height: 1.6;
+    margin: 0 0 8px;
+    color: variables.$grey-dark;
+    max-width: 56ch;
+  }
+
+  &__btn {
+    display: inline-block;
+    font-family: variables.$font-primary;
+    font-weight: 600; /* semibold */
+    font-size: 16px;
+    line-height: 1;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: variables.$yellow;
+    color: #fff; 
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 120ms ease;
+
+    &:hover {
+      background: variables.$yellow-light;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+    }
+  }
+
+  /* Responsivity */
+  @media (max-width: 480px) {
+    &__title {
+      font-size: 36px; /* scale down on very small screens for balance */
+    }
+  }
+}

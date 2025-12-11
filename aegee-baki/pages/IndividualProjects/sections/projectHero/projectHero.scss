@@ -1,0 +1,72 @@
+@use '../../../../styles/variables';
+
+.project-hero {
+  position: relative;
+  width: 100%;
+  min-height: 90vh; 
+  overflow: hidden;
+  background-color: #1468c5; 
+
+  .project-hero__bg {
+    position: relative;
+    width: 100%;
+    min-height: inherit;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .project-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(20, 104, 197, 0.5);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+
+
+  .project-hero__inner {
+    position: relative;
+    z-index: 3;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding: 0 1.5rem 3rem; 
+  }
+
+  .project-hero__headline {
+    text-transform: uppercase;
+    color: variables.$white;
+    margin: 0 0 0.75rem;
+  }
+
+  .project-hero__scroll-text {
+    font-family: variables.$font-primary;
+    font-size: 20px; 
+    line-height: 1.4;
+    color: variables.$white;
+    margin: 0;
+  }
+
+  // responsiveness
+  @media (max-width: 768px) {
+    min-height: 60vh;
+
+    .project-hero__inner {
+      padding-bottom: 2.25rem;
+    }
+
+    .project-hero__headline {
+      font-size: clamp(1.6rem, 5vw, 2rem);
+      letter-spacing: 0.08em;
+    }
+
+    .project-hero__scroll-text {
+      font-size: 16px; 
+    }
+  }
+}

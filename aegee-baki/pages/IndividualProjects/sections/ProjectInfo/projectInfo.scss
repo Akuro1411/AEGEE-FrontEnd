@@ -1,0 +1,81 @@
+@use "../../../../styles/variables";
+
+.project-info {
+  padding: 4rem 0;
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+}
+
+.project-info__inner {
+  width: 100%;
+}
+
+.project-info__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* left image card */
+.project-info__image-wrap {
+  width: 100%;
+}
+
+.project-info__image {
+  width: 100%;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+/* right content */
+.project-info__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.project-info__circles {
+  width: 80px;
+  max-width: 100%;
+}
+
+.project-info__title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: variables.$blue; 
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.project-info__text {
+  font-family: variables.$font-primary;
+  font-size: 16px;
+  line-height: 1.6;
+  color: variables.$grey-dark;
+
+  p {
+    margin: 0 0 0.875rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* mobile tweaks */
+@media (max-width: 768px) {
+  .project-info__grid {
+    gap: 2rem;
+  }
+
+  .project-info__content {
+    align-items: flex-start;
+  }
+}

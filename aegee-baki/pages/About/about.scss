@@ -1,0 +1,124 @@
+@use '../../styles/variables';
+@use '../../styles/layout';
+
+.cta {
+padding-top: 70px;
+padding-bottom: 70px;
+}
+.partners {
+    margin-bottom: 70px;
+    .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+    h2 {
+        color:variables.$blue;
+    }
+    p{
+        font-family: variables.$font-primary;
+        color: variables.$grey-dark;
+        font-size: 16px;
+        text-align: center;
+    }
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+margin-top: 64px;
+  &__left {
+    flex: 1 1 45%;
+  }
+
+  &__bubbles {
+    margin-bottom: 12px;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__title {
+    font-family: variables.$font-heading;
+    font-size: 32px;
+    color: variables.$blue;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-family: variables.$font-primary;
+    font-size: 16px;
+    color: variables.$grey-dark;
+    line-height: 1.6;
+  }
+
+  &__right {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(178, 214, 255, 0.1); 
+  border-radius: 20px;
+  padding: 20px;
+
+  &__icon {
+    background: rgba(178, 214, 255, 0.3); 
+    border-radius: 8px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    font-family: variables.$font-heading;
+    font-size: 24px;
+    color: variables.$blue-dark;
+    margin-bottom: 4px;
+  }
+
+  &__text {
+    font-family: variables.$font-primary;
+    font-size: 16px;
+    color: variables.$blue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact {
+    flex-direction: column;
+    gap: 32px;
+
+    &__left,
+    &__right {
+      width: 100%;
+      flex: 0 0 auto;
+    }
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+  
+  .text{
+    align-items: start;
+  }
+  .text p {
+    text-align: start;
+  }
+}

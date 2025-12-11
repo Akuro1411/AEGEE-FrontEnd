@@ -1,0 +1,90 @@
+@use './variables' as *;
+
+/* ========== Headings (Bebas Neue) ========== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  line-height: auto;
+  margin: 0;
+}
+
+h1 {
+  font-size: 96px;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
+}
+
+h3 {
+  font-size: 36px;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+h5 {
+  font-size: 22px;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+/* ========== Paragraph Text (Open Sans) ========== */
+.text-large {
+  font-family: $font-primary;
+  font-size: 20px;
+  line-height: auto;
+  &.regular {
+    font-weight: 400;
+  }
+  &.semibold {
+    font-weight: 600;
+  }
+}
+
+.text-base {
+  font-family: $font-primary;
+  font-size: 16px;
+  line-height: auto;
+  &.regular {
+    font-weight: 400;
+  }
+  &.semibold {
+    font-weight: 600;
+  }
+}
+
+.text-small {
+  font-family: $font-primary;
+  font-size: 12px;
+  line-height: auto;
+  &.regular {
+    font-weight: 400;
+  }
+  &.semibold {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,80 @@
+@use '../../styles/variables'; 
+
+.ga {
+  background: variables.$background; 
+  border-radius: 20px;               
+  padding: 20px 30px;                
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  &__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 320px;
+    gap: 15px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+
+&__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none; // remove any bg
+    padding: 0;       // no extra padding
+    cursor: pointer;
+    z-index: 2;
+    color: #fff; // default white
+    font-size: 30px; // make icon 30px
+    line-height: 1;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: variables.$grey-dark; // dark grey on hover
+    }
+
+    &--prev {
+      left: -5px; // space from card
+    }
+
+    &--next {
+      right: -5px; // space from card
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+
+  &__card { display: grid; gap: 10px; text-decoration: none; }
+
+  &__cover {
+    position: relative; overflow: hidden; height: 220px;
+    display: grid; grid-template-columns: 70% 1fr; gap: 3px; padding: 6px;
+    border-radius: 20px;
+  }
+  &__left { overflow: hidden; border-radius: 12px 0px 0px 12px; }
+  &__left img { width:100%; height:100%; object-fit: cover; display:block; }
+
+  &__right { display: grid; grid-template-rows: 1fr 1fr 1fr; gap: 3px; }
+  &__thumb { position: relative; overflow: hidden; border-radius: 0px 12px 12px 0px; }
+  &__thumb img { width:100%; height:100%; object-fit: cover; display:block; }
+
+  // +count on last thumb; value comes from data-count (e.g., "+12")
+  &__thumb--last::after {
+    content: attr(data-count);
+    position: absolute; inset: 0; display: grid; place-items: center;
+    background: rgba(0,0,0,.45); color: #fff; font-weight: 600; font-size: 22px; font-family: variables.$font-heading;
+  }
+
+  &__title {
+    font-size: 22px;                 // 22 px
+    color: variables.$grey-dark;     // use design token
+    font-family: variables.$font-heading;
+    line-height: 1.25; padding-left: 10px;
+  }
+}
+

@@ -1,0 +1,209 @@
+
+@use '../../styles/variables';
+@use '../../styles/layout';
+.event-page {
+  padding-bottom: 40px;
+}
+
+.event-hero {
+  padding: 140px 12px 40px 12px; 
+  img, &__placeholder {
+    width: 100%;
+    height: clamp(220px, 42vw, 360px);
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    background: variables.$blue;
+  }
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); 
+  gap: 20px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 24px 20px;
+  border-radius: 20px;
+  border: 1px solid variables.$background;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.10);
+  background: variables.$white;
+}
+
+.event-title {
+  font-size: 48px;
+  color: variables.$blue;
+  font-family: variables.$font-heading;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.section-h {
+  font-size: 24px;
+  color: variables.$grey-dark;
+  font-family: variables.$font-heading;
+  margin: 0 0 16px;
+}
+
+.event-grid__left { min-width: 0; display: flex; flex-direction: column; gap: 28px;}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px 24px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ov-item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: start;
+
+  &__icon svg { display: block; }
+
+  &__title {
+    font-size: 20px;
+    font-family: variables.$font-primary;
+    color: variables.$grey-dark;
+    font-weight: 600; // semibold
+  }
+  &__info {
+    font-size: 16px;
+    font-family: variables.$font-primary;
+    color: variables.$grey;
+    margin-top: 2px;
+  }
+}
+
+.ov-item--empty { visibility: hidden; }
+
+.about-p {
+  font-size: 16px;
+  font-family: variables.$font-primary;
+  color: variables.$grey-dark;
+  margin: 0;
+}
+
+.event-grid__right { min-width: 0; display: flex; flex-direction: column; gap: 28px;}
+
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  .status-title {
+    font-size: 16px;
+    font-weight: 600; // semibold
+    font-family: variables.$font-primary;
+    color: variables.$grey-dark;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: variables.$font-primary;
+    color: #647A16;
+    background: variables.$background;
+    border-radius: 8px;
+    padding: 4px 8px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+}
+
+.detail-block { margin: 16px 0; }
+.detail-title {
+  font-size: 20px;
+  font-family: variables.$font-primary;
+  font-weight: 600; // semibold
+  color: variables.$grey-dark;
+  margin-bottom: 8px;
+}
+.detail-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  .detail-text {
+    font-size: 16px;
+    color: variables.$grey;
+    font-family: variables.$font-primary;
+  }
+}
+
+.fee {
+  font-size: 36px;
+  color: #647A16;
+  font-family: variables.$font-heading;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: variables.$font-primary;
+  font-weight: 600;
+  text-decoration: none;
+
+  &--primary {
+    background: variables.$blue;
+    color: variables.$white;
+  }
+  &--primary:hover { background: variables.$blue-dark; }
+
+  &--sm { padding: 8px 16px; font-size: 14px; }
+
+  &--ghost {
+    background: transparent;
+    color: variables.$grey;
+    border: 1px solid variables.$background;
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}
+
+
+// LOCATION / MAP
+
+.loc-name {
+  font-size: 20px;
+  font-family: variables.$font-primary;
+  font-weight: 600;
+  color: variables.$grey-dark;
+  margin: 8px 0 10px;
+}
+
+.loc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 26px;
+
+  .loc-addr {
+    font-size: 16px;
+    font-family: variables.$font-primary;
+    color: variables.$grey;
+  }
+}

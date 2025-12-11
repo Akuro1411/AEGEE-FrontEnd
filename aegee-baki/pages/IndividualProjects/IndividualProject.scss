@@ -1,0 +1,35 @@
+@use "../../styles/variables";
+
+.project-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+.project-page__loading,
+.project-page__error {
+  padding: 6rem 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.partners {
+    margin-bottom: 70px;
+    .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+    h2 {
+        color:variables.$blue;
+    }
+    p{
+        font-family: variables.$font-primary;
+        color: variables.$grey-dark;
+        font-size: 16px;
+        text-align: center;
+    }
+}
+
