@@ -8,7 +8,7 @@ const API_BASE = (
 console.log("API_BASE in client.js =", API_BASE);
 
 const api = axios.create({
-  baseURL: ${API_BASE}/api,
+  baseURL: `${API_BASE}/api`,
 });
 
 export default api;
