@@ -2,8 +2,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./mobileMenu.scss";
-import { useAuth } from "../../src/Context/AuthContext"; // same path as in Header
-
+import { useAuth } from "../../src/Context/AuthContext"; 
 const MobileMenu = ({ onClose = () => {} }) => {
   const { isAuthenticated, logout } = useAuth();
 

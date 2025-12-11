@@ -1,7 +1,7 @@
 // components/Footer.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import '../Footer/Footer.scss';
+import './Footer.scss';
 import horizontalLine from '../../files/horizontal-line-f.png';
 
 const Footer = () => {
