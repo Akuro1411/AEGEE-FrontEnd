@@ -1,7 +1,7 @@
 // components/EventsSection/EventsSection.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./eventsSection.scss";
+import "./EventsSection.scss";
 
 import backArrow from "../../files/back_arrow.svg";
 import nextArrow from "../../files/next_arrow.svg";
