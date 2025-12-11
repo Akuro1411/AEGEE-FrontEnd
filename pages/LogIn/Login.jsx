@@ -92,9 +92,9 @@ const LoginPage = () => {
                   required
                 />
                 <span className="field__error">This field is required</span>
-                <a className="login__forgot" href="/forgot">
+                {/* <a className="login__forgot" href="/forgot">
                   Forgot password?
-                </a>
+                </a> */}
               </div>
 
               <button className="login__btn" type="submit" disabled={loading}>

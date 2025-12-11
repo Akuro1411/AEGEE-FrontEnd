@@ -1,4 +1,4 @@
-// pages/Past/PastEvents.jsx (or wherever this file is)
+// pages/Past/PastEvents.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Past.scss";
@@ -6,6 +6,18 @@ import { fetchPastProjects } from "../../src/api/projects";
 import { buildProjectSlug } from "../../src/utils/slug";
 import coloredCirclesOpposite from "../../files/colored-circles-opposite.png";
 import projectFallback from "../../files/hero-bg/su-1.webp";
+
+// 👇 import your custom images (adjust paths if needed)
+import ltcImage from "../../files/ltc.webp";
+import suImage from "../../files/su.webp";
+import infaImage from "../../files/infa.webp";
+
+// Map specific IDs to specific images
+const ID_IMAGE_MAP = {
+  9: ltcImage,
+  8: suImage,
+  7: infaImage,
+};
 
 const MAX_DESC = 350;
 const truncate = (s, n) =>
@@ -31,8 +43,8 @@ export default function PastEvents() {
             description: p.description || "",
             isoDate: p.isoDate || "",
             displayDate: p.displayDate || "",
-            image: p.image || null,
-            href: `/projects/${slug}`, // 🔗 real URL to individual project
+            image: p.image || null, // will come from api/projects.js
+            href: `/projects/${slug}`,
           };
         });
 
@@ -57,7 +69,10 @@ export default function PastEvents() {
         {projects.map((ev) => {
           const displayDate = ev.displayDate || "";
           const dateTime = ev.isoDate ? ev.isoDate.slice(0, 10) : "";
-          const bgImage = ev.image || projectFallback;
+
+          // 🔑 choose image: by ID first, then backend image, then fallback
+          const localImage = ID_IMAGE_MAP[Number(ev.id)];
+          const bgImage = localImage || ev.image || projectFallback;
 
           return (
             <li key={ev.id} className="pastCard">

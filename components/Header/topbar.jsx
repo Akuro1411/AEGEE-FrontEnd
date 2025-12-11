@@ -10,8 +10,8 @@ const TopBar = () => (
       <div></div> 
       <div className="top-bar__social">
         <a href="https://www.linkedin.com/company/aegeebaki/" target='_blank'><img src={linkedin} alt="LinkedIn" /></a>
-        <a href="#"><img src={instagram} alt="Instagram" /></a>
-        <a href="https://www.facebook.com/aegeebaku"><img src={facebook} alt="Facebook" /></a>
+        <a href="https://www.instagram.com/aegeebaki/" target='_blank' ><img src={instagram} alt="Instagram" /></a>
+        <a href="https://www.facebook.com/aegeebaku"target='_blank' ><img src={facebook} alt="Facebook" /></a>
       </div>
     </div>
   </div>

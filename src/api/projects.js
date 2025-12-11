@@ -1,3 +1,4 @@
+// src/api/projects.js
 import api from "./client";
 import { buildImageUrl } from "./utils";
 
@@ -17,17 +18,7 @@ function formatDisplayDate(isoDate) {
 /**
  * UPCOMING PROJECTS
  * GET /v1/projects
- * [
- *   {
- *     "id": 0,
- *     "title": "string",
- *     "date": "2025-12-02T12:12:15.225Z",
- *     "scope": "string",
- *     "imageUrl": "string"
- *   }
- * ]
  */
-
 function normalizeUpcomingProjects(raw) {
   if (!Array.isArray(raw)) return [];
 
@@ -67,16 +58,7 @@ export async function fetchUpcomingProjects() {
 /**
  * PAST PROJECTS
  * GET /v1/projects/past
- * [
- *   {
- *     "id": 0,
- *     "title": "string",
- *     "date": "2025-12-02T12:13:36.183Z",
- *     "description": "string"
- *   }
- * ]
  */
-
 function normalizePastProjects(raw) {
   if (!Array.isArray(raw)) return [];
 
@@ -89,6 +71,8 @@ function normalizePastProjects(raw) {
       description: p.description || "",
       isoDate,
       displayDate: formatDisplayDate(isoDate),
+      // pass image through as well, in case backend sends it
+      image: buildImageUrl(p.imageUrl),
     };
   });
 

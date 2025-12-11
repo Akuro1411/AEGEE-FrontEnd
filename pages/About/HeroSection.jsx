@@ -8,7 +8,7 @@ const InfoSection = () => {
       id: 1,
       number: '13,000',
       label: 'Members',
-      pos: { top: '22%', left: '73%' },
+      pos: { top: '22%', left: '68%' },
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 34 30">
           <path
